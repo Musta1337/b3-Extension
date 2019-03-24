@@ -36,28 +36,22 @@ seta sv_clientDvars "1"
 //Server performance dvar. Enable to allow server dvar editing. 1 to enable, 0 to disable.
 seta sv_serverDvars "1"
 
-//Allow everyone to use !spec or !afk command. 1 to enable, 0 to disable.
-seta sv_specAllowAll "1"
-
-//Allow Specific users to use !afk or !spec command. Insert the guid of players you want to allow to use the !spec or !afk command with "," being the seperator. Note: sv_specAllowAll must be disabled for this.
-seta sv_allowedList "342435234252343,234641342312523,3245623425234" //Random example with non-existing guid simulation. Change the value.
-
 //Enables Killstreak counter on top of screen. 1 to enable, 0 to disable.
 seta sv_killStreakCounter "1"
 
 //Enables HudElem. 1 to enable HudElem, 0 to disable.
 seta sv_hudEnable "1"
 
-//Text of Top HudElem. Insert a message. Insert message "null" to disable this hud.
+//Text of Top HudElem. Insert a message.
 seta sv_hudTop "^1TOP MESSAGE. CHANGE ME"
 
-//Text of Bottom HudElem. Insert a message. Insert message "null" to disable this hud.
+//Text of Bottom HudElem. Insert a message.
 seta sv_hudBottom "^1BOTTOM MESSAGE. CHANGE ME"
 
-//Text of Right HudElem. Insert a message. Insert message "null" to disable this hud.
+//Text of Right HudElem. Insert a message.
 seta sv_hudRight "^1RIGHT MESSAGE. CHANGE ME"
 
-//Text of Left HudElem. Insert a message. Insert message "null" to disable this hud.
+//Text of Left HudElem. Insert a message.
 seta sv_hudLeft "^1LEFT MESSAGE. CHANGE ME"
 
 //Enables Scrolling of Bottom Hud. 1 to enable, 0 to disable (Static position).
@@ -66,8 +60,36 @@ seta sv_scrollingHud "1"
 //Scrolling Speed of Bottom Hud. Default value: 30
 seta sv_scrollingSpeed "30"
 
+//Demo Quality enhancing. Enhance the Demo Quality and increase rate of demo information with precision. 1 to enable, 0 to disable.
+seta sv_demoQuality "1"
+
+//b3 Latency. 1000 = default value, Value must be higher than 1000 for proper experience. for slow connection to b3, put higher value.
+seta sv_b3latency "1000"
+
 ///////////////////////////////////////////
 ```
+
+## b3 Plugin Setup
+Coming soon. You can ask me about setup on discord while this is added.
+
+## Changelogs 
+
+v1.0.0.x
+- Initial relase
+- Some fixes and features addition
+
+v2.0.0.x
+- Connected b3 with IS.
+- Command execution based on b3 permission by IS. (Information on discord. setup coming soon.)
+- Bug fixes from v1.
+- Commands
+  1. !afk
+  2. !setafk
+  3. !teleport
+  4. !mode
+  5. !gametype
+  6. !kill
+  7. !suicide
 
 ## Contributing to the project
 
