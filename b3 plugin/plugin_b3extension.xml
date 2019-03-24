@@ -1,0 +1,11 @@
+<configuration plugin="b3extenion">
+   <settings name="commands">
+      <set name="afk">0</set>
+	  <set name="setafk">0</set>
+	  <set name="mode">0</set>
+	  <set name="gametype">0</set>
+	  <set name="kill">0</set>
+	  <set name="suicide">0</set>
+	  <set name="teleport">0</set>
+   </settings>
+</configuration>
