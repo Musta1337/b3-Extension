@@ -84,12 +84,27 @@ v2.0.0.x
 - Bug fixes from v1.
 - Commands
   1. !afk
-  2. !setafk
-  3. !teleport
-  4. !mode
-  5. !gametype
-  6. !kill
+  2. !setafk <playername>
+  3. !teleport <teleporter> <reciever>
+  4. !mode <dsr name>
+  5. !gametype <dsr name> <map name>(Unformatted)
+  6. !kill <playername>
   7. !suicide
+ 
+v2.0.0.2
+- Changed latency to 1200ms from 1000ms to have commands execute everytime.
+- Fixed OnSay2 Bug and Errors.
+- Added check for player rank before execution of command and prevent execution on higher rank.
+- Using Entref instead of Name of entity sent by b3 to InfinityScript.
+- Fixed issue in execution of 2 arguments commands due to player name having spaces.
+- Player finding function changed for InfinityScript. Now based on Entity Number.
+- Commands added:
+  1. !blockchat <playername> (Toggle command)*
+  2. !ac130 <playername> || all
+  3. !freeze <playername> (Toggle command)*
+  4. !changeteam <playername>
+  
+*Toggle command = Enables on first execution and same command is used for disabling.
 
 ## Contributing to the project
 

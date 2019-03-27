@@ -1,0 +1,17 @@
+<!-- b3 Extension Plugin configuration file -->
+<configuration plugin="b3extension">
+  <!-- Set admin rank for each command below -->
+  <settings name="commands">
+    <set name="ac130">0</set>
+	<set name="afk">0</set>
+	<set name="blockchat">0</set>
+	<set name="changeteam">0</set>
+	<set name="freeze">0</set>
+	<set name="kill">0</set>
+	<set name="setafk">0</set>
+	<set name="suicide">0</set>
+	<set name="teleport">0</set>
+	<set name="gametype">0</set>
+	<set name="mode">0</set>
+  </settings>
+</configuration>

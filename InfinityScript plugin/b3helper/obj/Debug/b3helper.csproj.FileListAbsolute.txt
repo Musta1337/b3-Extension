@@ -22,3 +22,11 @@ C:\Users\musta\Documents\GitHub\b3-InfinityScript\InfinityScript plugin\b3helper
 C:\Users\musta\Documents\GitHub\b3-InfinityScript\InfinityScript plugin\b3helper\obj\Debug\b3helper.csproj.CopyComplete
 C:\Users\musta\Documents\GitHub\b3-InfinityScript\InfinityScript plugin\b3helper\obj\Debug\b3extension.dll
 C:\Users\musta\Documents\GitHub\b3-InfinityScript\InfinityScript plugin\b3helper\obj\Debug\b3extension.pdb
+C:\Users\musta\Documents\GitHub\b3-Extension\InfinityScript plugin\b3helper\bin\Debug\b3extension.dll
+C:\Users\musta\Documents\GitHub\b3-Extension\InfinityScript plugin\b3helper\bin\Debug\b3extension.pdb
+C:\Users\musta\Documents\GitHub\b3-Extension\InfinityScript plugin\b3helper\bin\Debug\InfinityScript.dll
+C:\Users\musta\Documents\GitHub\b3-Extension\InfinityScript plugin\b3helper\obj\Debug\b3helper.csproj.CoreCompileInputs.cache
+C:\Users\musta\Documents\GitHub\b3-Extension\InfinityScript plugin\b3helper\obj\Debug\b3helper.csproj.CopyComplete
+C:\Users\musta\Documents\GitHub\b3-Extension\InfinityScript plugin\b3helper\obj\Debug\b3extension.dll
+C:\Users\musta\Documents\GitHub\b3-Extension\InfinityScript plugin\b3helper\obj\Debug\b3extension.pdb
+C:\Users\musta\Documents\GitHub\b3-Extension\InfinityScript plugin\b3helper\obj\Debug\b3helper.csprojAssemblyReference.cache

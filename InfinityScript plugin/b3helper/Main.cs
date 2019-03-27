@@ -25,8 +25,13 @@ namespace b3helper
         //Mode
         volatile string MapRotation = "";
 
+        //Unlimited ammo
+        public static bool activeunlimitedammo = false;
+
         public b3helper()
         {
+            Log.Info("b3Extension plugin by Musta#6382 and Pickle Rick#5230.");
+
             //Making and Settings dvars if they are unused and have value.
             Call("setDvarifUninitialized", "sv_hideCommands", "1"); //Done
             Call("setDvarifUninitialized", "sv_gmotd", "^:Welcome to the server."); //Done
@@ -45,7 +50,7 @@ namespace b3helper
             Call("setDvarifUninitialized", "sv_scrollingSpeed", "30"); //Done
             Call("setDvarifUninitialized", "sv_scrollingHud", "1"); //Done
             Call("setDvarifUninitialized", "sv_b3Execute", "null"); //Done
-            Call("setDvarifUninitialized", "sv_b3latency", "1000"); //Done
+            Call("setDvarifUninitialized", "sv_b3latency", "1200"); //Done
 
             //Loading Server Dvars.
             ServerDvars();
@@ -185,12 +190,16 @@ namespace b3helper
 
                     if (Call<int>("getDvarInt", "sv_hideCommands") != 0)
                         return EventEat.EatGame;
-                }
-            }
 
-            catch (Exception e)
+                }
+                if (player.GetField<int>("muted") == 1)
+                {
+                    return EventEat.EatGame;
+                }
+
+            }
+            catch (Exception)
             {
-                Log.Error(e);
             }
             return EventEat.EatNone;
         }
@@ -256,28 +265,28 @@ namespace b3helper
                 msg[0] = msg[0].ToLowerInvariant();
                 if (msg[0].StartsWith("!afk"))
                 {
-                    Entity player = FindSinglePlayer(msg[1]);
+                    Entity player = GetPlayer(msg[1]);
                     ChangeTeam(player, "spectator");
                 }
                 if (msg[0].StartsWith("!setafk"))
                 {
-                    Entity target = FindSinglePlayer(msg[1]);
+                    Entity target = GetPlayer(msg[1]);
                     ChangeTeam(target, "spectator");
                 }
                 if (msg[0].StartsWith("!kill"))
                 {
-                    Entity target = FindSinglePlayer(msg[1]);
+                    Entity target = GetPlayer(msg[1]);
                     target.Call("suicide");
                 }
                 if (msg[0].StartsWith("!suicide"))
                 {
-                    Entity player = FindSinglePlayer(msg[1]);
+                    Entity player = GetPlayer(msg[1]);
                     player.Call("suicide");
                 }
                 if (msg[0].StartsWith("!teleport"))
                 {
-                    Entity teleporter = FindSinglePlayer(msg[1]);
-                    Entity reciever = FindSinglePlayer(msg[2]);
+                    Entity teleporter = GetPlayer(msg[1]);
+                    Entity reciever = GetPlayer(msg[2]);
 
                     teleporter.Call("setOrigin", reciever.Origin);
                 }
@@ -299,13 +308,101 @@ namespace b3helper
                     }
                     string newMap = msg[2];
                     Mode(msg[1], newMap);
-                    
-                }
 
+                }
+                if (msg[0].StartsWith("!ac130"))
+                {
+                    if (msg[1].StartsWith("*all*"))
+                    {
+                        AC130All();
+                    }
+                    else
+                    {
+                        Entity player = GetPlayer(msg[1]);
+                        AfterDelay(500, () =>
+                        {
+                            player.TakeAllWeapons();
+                            player.GiveWeapon("ac130_105mm_mp");
+                            player.GiveWeapon("ac130_40mm_mp");
+                            player.GiveWeapon("ac130_25mm_mp");
+                            player.SwitchToWeaponImmediate("ac130_25mm_mp");
+                        });
+                    }
+
+                }
+                if (msg[0].StartsWith("!blockchat"))
+                {
+                    Entity player = GetPlayer(msg[1]);
+                    if (!player.HasField("muted"))
+                    {
+                        player.SetField("muted", 0);
+                    }
+                    if (player.GetField<int>("muted") == 1)
+                    {
+                        player.SetField("muted", 0);
+                        Utilities.RawSayAll($"^1{player.Name} chat has been unblocked.");
+                    }
+                    else if (player.GetField<int>("muted") == 0)
+                    {
+                        player.SetField("muted", 1);
+                        Utilities.RawSayAll($"^1{player.Name} chat has been blocked.");
+                    }
+                }
+                if (msg[0].StartsWith("!freeze"))
+                {
+                    Entity player = GetPlayer(msg[1]);
+                    if (!player.HasField("frozen"))
+                    {
+                        player.SetField("frozen", 0);
+                    }
+                    if (player.GetField<int>("frozen") == 1)
+                    {
+                        player.Call("freezecontrols", false);
+                        player.SetField("frozen", 0);
+                        Utilities.RawSayAll($"^1{player.Name} has been unfrozen.");
+                    }
+                    else if (player.GetField<int>("frozen") == 0)
+                    {
+                        player.Call("freezecontrols", true);
+                        player.SetField("frozen", 1);
+                        Utilities.RawSayAll($"^1{player.Name} has been frozen.");
+                    }
+                }
+                if (msg[0].StartsWith("!changeteam"))
+                {
+                    Entity player = GetPlayer(msg[1]);
+                    string playerteam = player.GetField<string>("sessionteam");
+
+                    switch (playerteam)
+                    {
+                        case "axis":
+                            ChangeTeam(player, "allies");
+                            break;
+                        case "allies":
+                            ChangeTeam(player, "axis");
+                            break;
+                        case "spectator":
+                            Utilities.RawSayAll($"^1{player.Name} team can't be changed because he is already spectator.");
+                            break;
+                    }
+
+                }
             }
             catch (Exception e)
             {
                 Log.Error("Error in Command Processing. Error:" + e.Message + e.StackTrace);
+            }
+        }
+
+        public void AC130All()
+        {
+            foreach (Entity player in Players)
+            {
+                player.TakeAllWeapons();
+                player.GiveWeapon("ac130_105mm_mp");
+                player.GiveWeapon("ac130_40mm_mp");
+                player.GiveWeapon("ac130_25mm_mp");
+                player.SwitchToWeaponImmediate("ac130_25mm_mp");
             }
         }
 
@@ -338,24 +435,20 @@ namespace b3helper
             MapRotation = "";
         }
 
-        public List<Entity> FindPlayers(string identifier, Entity sender = null)
+        public Entity GetPlayer(string entref)
         {
-            identifier = identifier.ToLowerInvariant();
-            return (from player in Players
-                    where player.Name.ToLowerInvariant().Contains(identifier)
-                    select player).ToList();
-        }
-
-        public Entity FindSinglePlayer(string identifier)
-        {
-            List<Entity> players = FindPlayers(identifier);
-            if (players.Count != 1)
-                return null;
-            return players[0];
+            foreach (Entity player in Players)
+            {
+                if (player.EntRef.ToString() == entref)
+                {
+                    return player;
+                }
+            }
+            return null;
         }
 
         public void ChangeTeam(Entity player, string team)
-        { 
+        {
             player.SetField("sessionteam", team);
             player.Notify("menuresponse", "team_marinesopfor", team);
         }
