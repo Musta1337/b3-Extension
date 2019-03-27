@@ -84,11 +84,11 @@ v2.0.0.x
 - Bug fixes from v1.
 - Commands
   1. !afk
-  2. !setafk <playername>
-  3. !teleport <teleporter> <reciever>
-  4. !mode <dsr name>
-  5. !gametype <dsr name> <map name>(Unformatted)
-  6. !kill <playername>
+  2. !setafk (playername)
+  3. !teleport (teleporter) (reciever)
+  4. !mode (dsr name)
+  5. !gametype (dsr name) (map name)(Unformatted)
+  6. !kill (playername)
   7. !suicide
  
 v2.0.0.2
@@ -99,10 +99,10 @@ v2.0.0.2
 - Fixed issue in execution of 2 arguments commands due to player name having spaces.
 - Player finding function changed for InfinityScript. Now based on Entity Number.
 - Commands added:
-  1. !blockchat <playername> Toggle command*
-  2. !ac130 <playername> || all
-  3. !freeze <playername> Toggle command*
-  4. !changeteam <playername>
+  1. !blockchat (playername) [Toggle command]*
+  2. !ac130 (playername) || all
+  3. !freeze (playername) [Toggle command]*
+  4. !changeteam (playername)
   
 *Toggle command = Enables on first execution and same command is used for disabling.
 
