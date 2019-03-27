@@ -63,8 +63,8 @@ seta sv_scrollingSpeed "30"
 //Demo Quality enhancing. Enhance the Demo Quality and increase rate of demo information with precision. 1 to enable, 0 to disable.
 seta sv_demoQuality "1"
 
-//b3 Latency. 1000 = default value, Value must be higher than 1000 for proper experience. for slow connection to b3, put higher value.
-seta sv_b3latency "1000"
+//b3 Latency. 1200 = default value, Value must be higher than 1200 for proper experience. for slow connection to b3, put higher value.
+seta sv_b3latency "1200"
 
 ///////////////////////////////////////////
 ```
