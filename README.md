@@ -99,9 +99,9 @@ v2.0.0.2
 - Fixed issue in execution of 2 arguments commands due to player name having spaces.
 - Player finding function changed for InfinityScript. Now based on Entity Number.
 - Commands added:
-  1. !blockchat <playername> (Toggle command)*
+  1. !blockchat <playername> Toggle command*
   2. !ac130 <playername> || all
-  3. !freeze <playername> (Toggle command)*
+  3. !freeze <playername> Toggle command*
   4. !changeteam <playername>
   
 *Toggle command = Enables on first execution and same command is used for disabling.
