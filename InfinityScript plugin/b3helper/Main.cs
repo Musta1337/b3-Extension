@@ -63,17 +63,13 @@ namespace b3helper
 
             OnInterval(50, () =>
             {
-                if (Call<string>("getDvar", "sv_b3Execute") == "null")
-                {
-                    return false;
-                }
-                else
+                if (Call<string>("getDvar", "sv_b3Execute") != "null")
                 {
                     string content = Call<string>("getDvar", "sv_b3Execute");
                     ProcessCommand(content);
                     Call("setDvar", "sv_b3Execute", "null");
-                    return true;
                 }
+                return true;
             });
         }
 
@@ -193,17 +189,6 @@ namespace b3helper
                 message = message.ToLower();
                 if ((message.StartsWith("!")) || (message.StartsWith("@")))
                 {
-                    /*
-                    AfterDelay(Call<int>("getDvarInt", "sv_b3latency"), () =>
-                    {
-                        if (Call<string>("getDvar", "sv_b3Execute") != "null")
-                        {
-                            string content = Call<string>("getDvar", "sv_b3Execute");
-                            ProcessCommand(content);
-                            Call("setDvar", "sv_b3Execute", "null");
-                        }
-                    });
-                    */
                     if (Call<int>("getDvarInt", "sv_hideCommands") != 0)
                         return EventEat.EatGame;
 
