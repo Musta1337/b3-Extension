@@ -155,7 +155,7 @@ namespace b3helper
             {
                 if (entity.GetField<int>("frozen") == 1)
                 {
-                    player.Call("freezecontrols", true);
+                    entity.Call("freezecontrols", true);
                 }
             });
         }
