@@ -143,6 +143,21 @@ namespace b3helper
 
             KillStreakHud[GetEntityNumber(player)] = killstreakHud;
             NoKillsHudElem[GetEntityNumber(player)] = noKills;
+
+            player.SpawnedPlayer += () =>
+            {
+                if (player.GetField<int>("frozen") == 1)
+                {
+                    player.Call("freezecontrols", true);
+                }
+            };
+            player.OnNotify("giveloadout", delegate (Entity entity)
+            {
+                if (entity.GetField<int>("frozen") == 1)
+                {
+                    player.Call("freezecontrols", true);
+                }
+            });
         }
 
 
