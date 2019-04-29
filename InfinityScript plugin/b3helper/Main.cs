@@ -136,16 +136,22 @@ namespace b3helper
 
             player.SpawnedPlayer += () =>
             {
-                if (player.GetField<int>("frozen") == 1)
+                if (player.HasField("frozen"))
                 {
-                    player.Call("freezecontrols", true);
+                    if (player.GetField<int>("frozen") == 1)
+                    {
+                        player.Call("freezecontrols", true);
+                    }
                 }
             };
             player.OnNotify("giveloadout", delegate (Entity entity)
             {
-                if (entity.GetField<int>("frozen") == 1)
+                if (entity.HasField("frozen"))
                 {
-                    entity.Call("freezecontrols", true);
+                    if (entity.GetField<int>("frozen") == 1)
+                    {
+                        entity.Call("freezecontrols", true);
+                    }
                 }
             });
         }
