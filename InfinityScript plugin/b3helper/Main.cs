@@ -36,10 +36,9 @@ namespace b3helper
             Call("setDvarifUninitialized", "sv_hideCommands", "1"); //Done
             Call("setDvarifUninitialized", "sv_gmotd", "^:Welcome to the server."); //Done
             Call("setDvarifUninitialized", "sv_forceSmoke", "1"); //Done
-            Call("setDvarifUninitialized", "sv_forceDemoRecording", "1"); //Done
             Call("setDvarifUninitialized", "sv_objText", "^1This is menu text."); //Done
             Call("setDvarifUninitialized", "sv_clientDvars", "1"); //Done
-            Call("setDvarifUninitialized", "sv_rate", "60000");
+            Call("setDvarifUninitialized", "sv_rate", "210000");
             Call("setDvarifUninitialized", "sv_serverDvars", "1"); //Done
             Call("setDvarifUninitialized", "sv_killStreakCounter", "1"); //Done
             Call("setDvarifUninitialized", "sv_hudEnable", "1"); //Dome
@@ -50,7 +49,6 @@ namespace b3helper
             Call("setDvarifUninitialized", "sv_scrollingSpeed", "30"); //Done
             Call("setDvarifUninitialized", "sv_scrollingHud", "1"); //Done
             Call("setDvarifUninitialized", "sv_b3Execute", "null"); //Done
-            Call("setDvarifUninitialized", "sv_b3latency", "1200"); //Done
 
             //Loading Server Dvars.
             ServerDvars();
@@ -96,10 +94,6 @@ namespace b3helper
                 Function.Call("setDvar", "cg_everyoneHearsEveryone", 1);
                 Function.Call("makedvarserverinfo", "motd", Call<string>("getDvar", "sv_gmotd"));
                 Function.Call("makedvarserverinfo", "didyouknow", Call<string>("getDvar", "sv_gmotd"));
-                if (Call<int>("getDvarInt", "sv_forceDemoRecording") != 0)
-                {
-                    Function.Call("setDvar", "cl_demo_enabled", 1);
-                }
             }
         }
 
@@ -124,10 +118,6 @@ namespace b3helper
             if (Call<int>("getDvarInt", "sv_forceSmoke") != 0)
             {
                 player.SetClientDvar("fx_draw", "1");
-            }
-            if (Call<int>("getDvarInt", "sv_forceDemoRecording") != 0)
-            {
-                player.SetClientDvar("cl_demo_enabled", "True");
             }
 
             //Killstreak Related Code

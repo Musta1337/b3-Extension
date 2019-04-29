@@ -24,9 +24,6 @@ seta sv_gmotd "^1Welcome to the server. Edit me."
 //Force users to have smoke. Does not allow users to remove smoke in game. 1 to enable, 0 to disable.
 seta sv_forceSmoke "1"
 
-//Force users demo recording. Automatically enables user demo recording. 1 to enable, 0 to disable.
-seta sv_forceDemoRecording "1"
-
 //Ojective text in menu. Objective text shown in the menu, edit to your liking.
 seta sv_objText "^1Welcome to the server. Edit me."
 
@@ -59,12 +56,6 @@ seta sv_scrollingHud "1"
 
 //Scrolling Speed of Bottom Hud. Default value: 30
 seta sv_scrollingSpeed "30"
-
-//Demo Quality enhancing. Enhance the Demo Quality and increase rate of demo information with precision. 1 to enable, 0 to disable.
-seta sv_demoQuality "1"
-
-//b3 Latency. 1200 = default value, Value must be higher than 1200 for proper experience. for slow connection to b3, put higher value.
-seta sv_b3latency "1200"
 
 ///////////////////////////////////////////
 ```
@@ -103,6 +94,12 @@ v2.0.0.2
   2. !ac130 (playername) || all
   3. !freeze (playername) [Toggle command]*
   4. !changeteam (playername)
+  
+v2.0.0.3
+- Instead of using latency, the IS will check for executed b3 command on interval of 50ms.
+- Demo recording issue has been removed.
+- rate increased from 60000 (6kbps upload) to 210000 (21kbps upload).
+- Freeze command fixed where user would get unfreezed after respawning causing script execution issue.
   
 *Toggle command = Enables on first execution and same command is used for disabling.
 
