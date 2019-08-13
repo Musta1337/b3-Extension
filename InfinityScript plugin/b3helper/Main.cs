@@ -295,6 +295,26 @@ namespace b3helper
                     Entity player = GetPlayer(msg[1]);
                     player.Call("suicide");
                 }
+                if  (msg[0].StartsWith("!godmode"))
+                {
+                    Entity player = GetPlayer(msg[1]);
+                    if (!player.HasField("godmodeon"))
+                    {
+                        player.SetField("godmodeon", "0");
+                    }
+                    if (player.GetField<int>("godmodeon") == 1)
+                    {
+                        player.Health = 30;
+                        player.SetField("godmodeon", "0");
+                        Utilities.RawSayAll($"^1{player.Name} GodMode has been deactivated.");
+                    }
+                    else if (player.GetField<int>("godmodeon") == 0)
+                    {
+                        player.Health = -1;
+                        player.SetField("godmodeon", "1");
+                        Utilities.RawSayAll($"^1{player.Name} GodMode has been activated.");
+                    }
+                }
                 if (msg[0].StartsWith("!teleport"))
                 {
                     Entity teleporter = GetPlayer(msg[1]);
